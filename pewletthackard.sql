@@ -46,3 +46,14 @@ CREATE TABLE titles(
 	from_date DATE,
 	to_date DATE
 );
+
+SELECT d.dept_no, d.dept_name, e.emp_no, s.from_date, s.to_date, e.birth_date, e.gender, e.hire_date, s.salary, t.title  
+FROM departments as d 
+JOIN dept_emp AS de 
+ON d.dept_no = de.dept_no
+JOIN employees AS e
+ON e.emp_no = de.emp_no
+JOIN salaries AS s
+ON s.emp_no = e.emp_no
+JOIN titles as t
+ON t.emp_no = e.emp_no

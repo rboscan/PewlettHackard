@@ -12,10 +12,12 @@ to_date DATE FK >- s.to_date
 
 employees as e
 ----
-dept_no VARCHAR FK >- d.dept_no
 emp_no VARCHAR PK
-from_date DATE FK >- s.from_date
-to_date DATE FK >- s.to_date
+birth_date UNIQUE VARCHAR
+first_name UNIQUE VARCHAR
+last_name UNIQUE VARCHAR
+gender UNIQUE VARCHAR
+hire_date UNIQUE DATE
 
 salaries as s
 ------------
@@ -28,12 +30,12 @@ titles as t
 ----
 emp_no VARCHAR FK >- s.emp_no
 title VARCHAR UNIQUE
-from_date DATE FK >- e.from_date
-to_date DATE FK >- e.to_date
+from_date DATE FK >- de.from_date
+to_date DATE FK >- de.to_date
 
 dept_manager
 ----
 dept_no VARCHAR FK >- de.dept_no
 emp_no VARCHAR FK >- e.emp_no
-from_date DATE FK >- e.from_date
-to_date DATE FK >- e.to_date
+from_date DATE FK >- de.from_date
+to_date DATE FK >- de.to_date

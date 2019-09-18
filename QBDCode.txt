@@ -1,32 +1,39 @@
 department as d
 -
-dept_no VARCHAR FK >- date_emp.dept_no
-dept_name VARCHAR
+dept_no VARCHAR PK
+dept_name VARCHAR UNIQUE
 
 date_emp as de
 -
-emp_no VARCHAR
-dept_no VARHCAR FK >- employees.dept_no
+emp_no VARCHAR FK >- e.emp_no
+dept_no VARHCAR FK >- d.dept_no
 from_date DATE FK >- s.from_date
 to_date DATE FK >- s.to_date
 
 employees as e
 ----
-dept_no VARCHAR FK
-emp_no VARCHAR
+dept_no VARCHAR FK >- d.dept_no
+emp_no VARCHAR PK
 from_date DATE FK >- s.from_date
 to_date DATE FK >- s.to_date
 
 salaries as s
 ------------
 emp_no VARCHAR FK >- e.emp_no
-salary VARCHAR
+salary VARCHAR UNIQUE
 from_date DATE FK >- t.from_date
 to_date DATE FK >- t.to_date
 
 titles as t
 ----
 emp_no VARCHAR FK >- s.emp_no
-title VARCHAR
+title VARCHAR UNIQUE
+from_date DATE FK >- e.from_date
+to_date DATE FK >- e.to_date
+
+dept_manager
+----
+dept_no VARCHAR FK >- de.dept_no
+emp_no VARCHAR FK >- e.emp_no
 from_date DATE FK >- e.from_date
 to_date DATE FK >- e.to_date

@@ -87,3 +87,17 @@ JOIN salaries AS s
 ON s.emp_no = e.emp_no
 JOIN title_nd AS t
 ON t.emp_no = e.emp_no;
+
+-- View includes duplicate titles and position changes
+
+CREATE OR REPLACE VIEW full_database_duplicates AS
+SELECT d.dept_no, d.dept_name, s.emp_no, e.first_name, e.last_name, e.gender, e.hire_date, de.from_date, de.to_date, s.salary, t.title
+FROM departments AS d 
+JOIN dept_emp AS de 
+ON d.dept_no = de.dept_no
+JOIN employees AS e
+ON e.emp_no = de.emp_no
+JOIN salaries AS s
+ON s.emp_no = e.emp_no
+JOIN titles AS t
+ON t.emp_no = e.emp_no;

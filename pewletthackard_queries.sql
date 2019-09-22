@@ -8,13 +8,12 @@ WHERE hire_date between '01/01/1986' and '12/31/1986'
 ORDER BY hire_date DESC;
 -- 3. List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name, and start and end employment dates.
 CREATE OR REPLACE VIEW management AS
-SELECT dm.dept_no, fdb.dept_name, dm.emp_no, fdb.last_name, fdb.first_name, dm.from_date, dm.to_date, fdb.salary
-FROM full_database AS fdb
+SELECT dm.dept_no, fdb.dept_name, dm.emp_no, fdb.last_name, fdb.first_name, dm.from_date, dm.to_date
+FROM full_database_duplicates AS fdb
 INNER JOIN dept_manager as dm
 ON dm.emp_no = fdb.emp_no
 WHERE title = 'Manager'
-ORDER BY dept_no ASC;
-SELECT * FROM management
+SELECT * FROM management;
 -- 4. List the department of each employee with the following information: employee number, last name, first name, and department name.
 SELECT  emp_no, last_name, first_name, dept_name
 FROM full_database

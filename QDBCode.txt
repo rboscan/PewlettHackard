@@ -3,7 +3,7 @@ department as d
 dept_no VARCHAR PK
 dept_name VARCHAR UNIQUE
 
-date_emp as de
+dept_emp as de
 -
 emp_no VARCHAR FK -< e.emp_no
 dept_no VARHCAR FK - d.dept_no
